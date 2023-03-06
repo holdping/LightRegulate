@@ -1,5 +1,7 @@
 #include "bsp_adc.h" 
 #include "delay.h"
+float soil_value;
+int c02;
 void ADC_Pin_Init(void)
 {
 		GPIO_InitTypeDef GPIO_InitStructure; //定义结构体变量	
@@ -15,11 +17,11 @@ void ADC_Pin_Init(void)
 	GPIO_Init(GPIOB,&GPIO_InitStructure);
 	
 	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
-	ADC_InitStructure.ADC_ScanConvMode = DISABLE;//非扫描模式	
-	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;//关闭连续转换
+	ADC_InitStructure.ADC_ScanConvMode = ENABLE;//非扫描模式	
+	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;//关闭连续转换
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;//禁止触发检测，使用软件触发
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;//右对齐	
-	ADC_InitStructure.ADC_NbrOfChannel = 1;//1个转换在规则序列中 也就是只转换规则序列1 
+	ADC_InitStructure.ADC_NbrOfChannel = 3;//1个转换在规则序列中 也就是只转换规则序列1 
 	ADC_Init(ADC1, &ADC_InitStructure);//ADC初始化
 	
 	ADC_Cmd(ADC1, ENABLE);//开启AD转换器

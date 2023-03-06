@@ -9,7 +9,7 @@
 void ADC_Pin_Init(void);
 
 u16 ADC_Trans(u8 ch,u8 times);
-extern u16 sensor_value;
+
 
 #endif
 

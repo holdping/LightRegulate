@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\USER;.\CORE;.\FWLib\inc;.\HARDWARE\sys;.\HARDWARE\delay;.\HARDWARE\LED;.\HARDWARE\lcd1602;.\HARDWARE\sensor;.\HARDWARE\sensor\inc;.\HARDWARE\SR50;.\HARDWARE\BEEP;.\HARDWARE\esp8266;.\HARDWARE\MyUSART;.\HARDWARE\usart3;.\HARDWARE\timer</IncludePath>
+              <IncludePath>.\USER;.\CORE;.\FWLib\inc;.\HARDWARE\sys;.\HARDWARE\delay;.\HARDWARE\LED;.\HARDWARE\lcd1602;.\HARDWARE\esp8266;.\HARDWARE\usart3;.\HARDWARE\timer;.\HARDWARE;.\HARDWARE\SPI;.\HARDWARE\ADC3;.\HARDWARE\values</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -579,16 +579,6 @@
               <FilePath>.\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\sensor\src\bsp_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_adc_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\sensor\src\bsp_adc_dma.c</FilePath>
-            </File>
-            <File>
               <FileName>esp.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\esp8266\esp.c</FilePath>
@@ -602,6 +592,26 @@
               <FileName>Timer.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\timer\Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\SPI\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\ADC3\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>DHT11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\values\DHT11.c</FilePath>
+            </File>
+            <File>
+              <FileName>values.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HARDWARE\values\values.c</FilePath>
             </File>
           </Files>
         </Group>

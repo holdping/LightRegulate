@@ -1,5 +1,6 @@
-.\objects\adc.o: USER\HARDWARE\ADC\adc.c
-.\objects\adc.o: USER\HARDWARE\ADC\adc.h
+.\objects\adc.o: HARDWARE\ADC3\adc.c
+.\objects\adc.o: HARDWARE\ADC3\adc.h
+.\objects\adc.o: .\HARDWARE\sys\sys.h
 .\objects\adc.o: .\USER\stm32f10x.h
 .\objects\adc.o: .\CORE\core_cm3.h
 .\objects\adc.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -29,3 +30,4 @@
 .\objects\adc.o: .\FWLib\inc\stm32f10x_usart.h
 .\objects\adc.o: .\FWLib\inc\stm32f10x_wwdg.h
 .\objects\adc.o: .\FWLib\inc\misc.h
+.\objects\adc.o: .\HARDWARE\delay\delay.h

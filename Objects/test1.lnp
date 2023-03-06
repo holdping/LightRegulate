@@ -30,11 +30,12 @@
 ".\objects\sys.o"
 ".\objects\delay.o"
 ".\objects\led.o"
-".\objects\bsp_adc.o"
-".\objects\bsp_adc_dma.o"
 ".\objects\esp.o"
 ".\objects\usart3.o"
 ".\objects\timer.o"
+".\objects\oled.o"
+".\objects\adc.o"
+".\objects\dht11.o"
 --strict --scatter ".\Objects\test1.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

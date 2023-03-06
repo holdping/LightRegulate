@@ -32,7 +32,10 @@
 .\objects\main.o: .\HARDWARE\sys\sys.h
 .\objects\main.o: .\HARDWARE\delay\delay.h
 .\objects\main.o: G:\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\main.o: .\FWLib\inc\bsp_adc.h
 .\objects\main.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\HARDWARE\esp8266\esp.h
 .\objects\main.o: .\HARDWARE\usart3\usart3.h
+.\objects\main.o: .\HARDWARE\SPI\OLED.h
+.\objects\main.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: .\HARDWARE\ADC3\adc.h
+.\objects\main.o: .\HARDWARE\values\dht11.h

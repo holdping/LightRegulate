@@ -7,6 +7,10 @@
 #include "bsp_adc.h"
 #include "led.h"
 
+extern u16 co2_value;
+extern u8 soil_value;
+extern u16 light_value;
+extern u8 DHT11_Temp,DHT11_Hum;	
 extern char RECS[600];
 extern char RECS1[600];
 const char* WIFI ="test";
@@ -17,8 +21,14 @@ const char* passwd="H0oBbZwHmj";
 const char* Url="gz-3-mqtt.iot-api.com";
 const char* pubtopic="attributes";
 const char* subtopic="attributes/push";
-const char* func1="sensor_value";
-const char* func2="beep_run";
+const char* s_soil_value="soil_value";
+const char* s_light_value="light_value";
+const char* s_temp_value="temp_value";
+const char* s_hum_value="hum_value";
+const char* s_co2_value="co2_value";
+const char* s_led="s_led";
+const char* s_cold="s_cold";
+const char* s_hot="s_hot";
 char* ret;
 int esp_Init(void)
 {
@@ -69,12 +79,12 @@ int esp_Init(void)
 char Esp_PUB(void)
 {
 	memset(RECS,0,sizeof(RECS));
-//	u3_printf("AT+MQTTPUB=0,\"%s\",\"\\{\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\}\",0,0\r\n",
-//	pubtopic,func1,sensor_value,func2,beep_run,func4,hc501_state,func5,yuzhi);
+	u3_printf("AT+MQTTPUB=0,\"%s\",\"\\{\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\\,\\\"%s\\\"\:%d\}\",0,0\r\n",
+	pubtopic,s_soil_value,soil_value,s_light_value,light_value,s_co2_value,co2_value,s_temp_value,DHT11_Temp,s_hum_value,DHT11_Hum);
 	//while(RECS[0]);//等待ESP返回数据
-//	delay_ms(200);//延时等待数据接收完成 
-//	if(strcmp(RECS,"ERROR")==0)
-//		return 1;
+	delay_ms(200);//延时等待数据接收完成 
+	if(strcmp(RECS,"ERROR")==0)
+		return 1;
 	return 0;
 }
 void CommandAnalyse(void)
