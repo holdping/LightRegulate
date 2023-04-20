@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>.\USER;.\CORE;.\FWLib\inc;.\HARDWARE\sys;.\HARDWARE\delay;.\HARDWARE\LED;.\HARDWARE\lcd1602;.\HARDWARE\esp8266;.\HARDWARE\usart3;.\HARDWARE\timer;.\HARDWARE;.\HARDWARE\SPI;.\HARDWARE\ADC3;.\HARDWARE\values</IncludePath>
+              <IncludePath>.\USER;.\CORE;.\FWLib\inc;.\HARDWARE\sys;.\HARDWARE\delay;.\HARDWARE\LED;.\HARDWARE\usart3;.\HARDWARE\timer;.\HARDWARE;.\HARDWARE\ADC3</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -459,11 +459,6 @@
               <FilePath>.\FWLib\src\stm32f10x_bkp.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FWLib\src\stm32f10x_can.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_cec.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWLib\src\stm32f10x_cec.c</FilePath>
@@ -472,11 +467,6 @@
               <FileName>stm32f10x_crc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWLib\src\stm32f10x_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FWLib\src\stm32f10x_dac.c</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_dbgmcu.c</FileName>
@@ -539,11 +529,6 @@
               <FilePath>.\FWLib\src\stm32f10x_sdio.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\FWLib\src\stm32f10x_spi.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\FWLib\src\stm32f10x_tim.c</FilePath>
@@ -579,11 +564,6 @@
               <FilePath>.\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>esp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\esp8266\esp.c</FilePath>
-            </File>
-            <File>
               <FileName>usart3.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\usart3\usart3.c</FilePath>
@@ -594,24 +574,14 @@
               <FilePath>.\HARDWARE\timer\Timer.c</FilePath>
             </File>
             <File>
-              <FileName>OLED.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\SPI\OLED.c</FilePath>
-            </File>
-            <File>
               <FileName>adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\HARDWARE\ADC3\adc.c</FilePath>
             </File>
             <File>
-              <FileName>DHT11.c</FileName>
+              <FileName>iwdg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\HARDWARE\values\DHT11.c</FilePath>
-            </File>
-            <File>
-              <FileName>values.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\HARDWARE\values\values.c</FilePath>
+              <FilePath>.\HARDWARE\delay\iwdg.c</FilePath>
             </File>
           </Files>
         </Group>

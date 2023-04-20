@@ -10,7 +10,7 @@
 #define LED1  PBout(7)      // 
 #define LED2  PBout(8)     // 
 #define HC501s PBin(3)
-
+extern u8 dust;
 void LED_Init(void);
 void KEY_init(void);
 #endif

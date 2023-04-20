@@ -1,5 +1,5 @@
 #include "delay.h"
-
+#include "iwdg.h"
 #define 		AHB_freq			72000000UL
 #define 		APB1_freq			36000000UL
 #define 		APB2_freq			72000000UL
@@ -11,6 +11,7 @@ void delay_ms(u16 ms)
 	SysTick->CTRL = 0x01;
 	while(!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk));
 	SysTick->CTRL &= ~(0x01<<SysTick_CTRL_ENABLE_Pos);
+	IWDG_ReloadCounter(); 
 }
 //延时nus
 //nus为要延时的us数.		    								   
@@ -30,6 +31,7 @@ void delay_us(u32 us)
 	SysTick->CTRL = 0x01;
 	while(!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk));
 	SysTick->CTRL &= ~(0x01<<SysTick_CTRL_ENABLE_Pos);
+	IWDG_ReloadCounter(); 
 }
 
 

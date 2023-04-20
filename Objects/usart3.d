@@ -33,4 +33,3 @@
 .\objects\usart3.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\objects\usart3.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\usart3.o: G:\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\usart3.o: .\HARDWARE\esp8266\esp.h

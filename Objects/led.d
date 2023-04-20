@@ -31,3 +31,4 @@
 .\objects\led.o: HARDWARE\LED\led.h
 .\objects\led.o: .\HARDWARE\sys\sys.h
 .\objects\led.o: .\HARDWARE\delay\delay.h
+.\objects\led.o: .\HARDWARE\timer\Timer.h

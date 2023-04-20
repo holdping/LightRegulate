@@ -1,4 +1,6 @@
 .\objects\timer.o: HARDWARE\timer\Timer.c
+.\objects\timer.o: HARDWARE\timer\Timer.h
+.\objects\timer.o: .\HARDWARE\sys\sys.h
 .\objects\timer.o: .\USER\stm32f10x.h
 .\objects\timer.o: .\CORE\core_cm3.h
 .\objects\timer.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -28,8 +30,4 @@
 .\objects\timer.o: .\FWLib\inc\stm32f10x_usart.h
 .\objects\timer.o: .\FWLib\inc\stm32f10x_wwdg.h
 .\objects\timer.o: .\FWLib\inc\misc.h
-.\objects\timer.o: HARDWARE\timer\Timer.h
-.\objects\timer.o: G:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\timer.o: G:\keil5\ARM\ARMCC\Bin\..\include\string.h
-.\objects\timer.o: .\HARDWARE\delay\delay.h
-.\objects\timer.o: .\HARDWARE\esp8266\esp.h
+.\objects\timer.o: .\HARDWARE\LED\led.h

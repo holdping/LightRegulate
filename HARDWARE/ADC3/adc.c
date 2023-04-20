@@ -1,26 +1,26 @@
 #include "adc.h" 
 #include "delay.h"
 
-void ADC_Init(void)
+void ADC1_Init(void)
 {
 		GPIO_InitTypeDef GPIO_InitStructure; //定义结构体变量	
 	ADC_InitTypeDef       ADC_InitStructure;
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB|RCC_APB2Periph_ADC1,ENABLE);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_ADC1,ENABLE);
 	
 	RCC_ADCCLKConfig(RCC_PCLK2_Div6);//设置ADC分频因子6 72M/6=12,ADC最大时间不能超过14M
 	
-	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0|soil_pin|LI_pin;//ADC
+	GPIO_InitStructure.GPIO_Pin=GPIO_Pin_1;//ADC
 	GPIO_InitStructure.GPIO_Mode=GPIO_Mode_AIN;	//模拟输入
 	GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB,&GPIO_InitStructure);
+	GPIO_Init(GPIOA,&GPIO_InitStructure);
 	
 	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
 	ADC_InitStructure.ADC_ScanConvMode = ENABLE;//非扫描模式	
 	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;//关闭连续转换
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;//禁止触发检测，使用软件触发
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;//右对齐	
-	ADC_InitStructure.ADC_NbrOfChannel = 3;//1个转换在规则序列中 也就是只转换规则序列1 
+	ADC_InitStructure.ADC_NbrOfChannel = 1;//1个转换在规则序列中 也就是只转换规则序列1 
 	ADC_Init(ADC1, &ADC_InitStructure);//ADC初始化
 	
 	ADC_Cmd(ADC1, ENABLE);//开启AD转换器

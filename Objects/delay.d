@@ -29,3 +29,4 @@
 .\objects\delay.o: .\FWLib\inc\stm32f10x_usart.h
 .\objects\delay.o: .\FWLib\inc\stm32f10x_wwdg.h
 .\objects\delay.o: .\FWLib\inc\misc.h
+.\objects\delay.o: HARDWARE\delay\iwdg.h
