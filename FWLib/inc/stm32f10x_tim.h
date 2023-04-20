@@ -89,8 +89,8 @@ typedef struct
                                    This parameter can be a value of @ref TIM_Output_Compare_N_state
                                    @note This parameter is valid only for TIM1 and TIM8. */
 
-  uint16_t TIM_Pulse;         /*!< Specifies the pulse value to be loaded into the Capture Compare Register. 
-                                   This parameter can be a number between 0x0000 and 0xFFFF */
+  uint16_t TIM_Pulse;/*!< 指定要加载到捕获比较寄存器的脉冲值。
+该参数可以是 0x0000 到 0xFFFF 之间的数字*/
 
   uint16_t TIM_OCPolarity;    /*!< Specifies the output polarity.
                                    This parameter can be a value of @ref TIM_Output_Compare_Polarity */

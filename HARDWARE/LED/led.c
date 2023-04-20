@@ -3,18 +3,36 @@
 #include "delay.h"
  
 	    
-//LED IO³õÊ¼»¯
+//LED IOï¿½ï¿½Ê¼ï¿½ï¿½
 void LED_Init(void)
 {
  
  GPIO_InitTypeDef  GPIO_InitStructure;
  	
- RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);	 //Ê¹ÄÜPA¶Ë¿ÚÊ±ÖÓ
+ RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);	 //Ê¹ï¿½ï¿½PAï¿½Ë¿ï¿½Ê±ï¿½ï¿½
 	
- GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_7|GPIO_Pin_8|GPIO_Pin_11;				 //LED0-->PC.13 ¶Ë¿ÚÅäÖÃ
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ÍÆÍìÊä³ö
+ GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7|GPIO_Pin_8;				 //LED0-->PC.13 ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- GPIO_Init(GPIOA, &GPIO_InitStructure);
- GPIO_SetBits(GPIOA,GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_7|GPIO_Pin_8|GPIO_Pin_11);						 //½«¼ÌµçÆ÷Òý½ÅÈ«²¿À­¸ß
+ GPIO_Init(GPIOB, &GPIO_InitStructure);
+ GPIO_ResetBits(GPIOB,GPIO_Pin_7|GPIO_Pin_8);						 //ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
+}
+
+void KEY_init(void)
+{
+    GPIO_InitTypeDef KEY;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+
+    KEY.GPIO_Pin           =  GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6;
+    KEY.GPIO_Speed         =  GPIO_Speed_50MHz;
+    KEY.GPIO_Mode	       =  GPIO_Mode_IPU;
+    GPIO_Init(GPIOA,&KEY);
+
+     GPIO_InitTypeDef HC501;
+     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    HC501.GPIO_Pin           =  GPIO_Pin_3;
+    HC501.GPIO_Speed         =  GPIO_Speed_50MHz;
+    HC501.GPIO_Mode	         =  GPIO_Mode_IPU;
+    GPIO_Init(GPIOB,&HC501);
 }

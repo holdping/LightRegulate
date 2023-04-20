@@ -2,93 +2,114 @@
 #include "led.h"
 #include "delay.h"
 #include "string.h"
-//#include "bsp_adc.h"
 #include <stdio.h>
-#include "esp.h"
 #include "usart3.h"
-#include "OLED.h"
 #include "sys.h"
 #include "adc.h"
-#include "dht11.h"
-  extern u16 co2_value;
-	extern u8 soil_value;
-	extern u16 light_value;
-	extern char RECS[600];
-	extern char RECS1[600];
-extern u8 DHT11_Temp,DHT11_Hum;		
+#include "Timer.h"
+uint8_t Key_GetNum(void);
+void KEY_ui(void);
+void LightRegulate(void);
+
 int main(void)
 	
 {  
+	  u8 light = 0;
 	  LED_Init();
-		usart1_init(115200);
-		usart3_init(115200);
-	 soil_value= get_adc_value(1);
+	  KEY_init();
+	  ADC_Init();
+	  TIM3_PWM_Init(7200,10000);
+  	  usart3_init(115200);
+
 	while(1)
 	{ 
-      DHT11_Read_Data(&DHT11_Temp,&DHT11_Hum);	//获取空气温湿度
-		u1_printf("co0 \r\n");
-//		memset(RECS,0,sizeof(RECS));
-//		COLD=1;
-		delay_ms(1000);
-		delay_ms(1000);
-//		u3_printf("test usart3:%s\r\n",RECS1);
-//		memset(RECS1,0,sizeof(RECS1));
-//		COLD=0;
-//		delay_ms(1000);
-//		delay_ms(1000);
+		
+		light 	= ADC_Trans(ADC_Channel_1,10);
+	   	u3_printf("light:%d\r\n",light);
+		if(HC501s)
+			LED3=1;
+		KEY_ui();
 
 	}
 }
-void loop(void)
+
+uint8_t Key_GetNum(void)
 {
-	while(1)
+    uint8_t KeyNum = 0;
+    if (KEY1==0) //KEY 可能被按下
+    {
+        Delay_ms(20);//消抖
+		 if (KEY1==0)//判断KEY是否真的按下
+        while (KEY1 == 0);//等待按键释放
+        Delay_ms(20);
+        KeyNum = 1;
+    }
+    if (KEY2 == 0)
+    {
+        Delay_ms(20);
+		if (KEY2 == 0)
+        while (KEY2 == 0);
+        Delay_ms(20);
+        KeyNum = 2;
+    }
+    
+	    if (KEY3==0)
+    {
+        Delay_ms(20);
+		if (KEY3==0)
+        while (KEY3 == 0);
+        Delay_ms(20);
+        KeyNum = 3;
+    }
+    if (KEY4 == 0)
+    {
+        Delay_ms(20);
+		if (KEY4 == 0)
+        while (KEY4 == 0);
+        Delay_ms(20);
+        KeyNum = 4;
+    }
+    
+    return KeyNum;
+}
+
+void KEY_ui(void)
+{
+	u8 KEY_NUm = Key_GetNum();
+	switch (KEY_NUm)
 	{
-		//判断温湿度阈值
-		DHT11_Read_Data(&DHT11_Temp,&DHT11_Hum);
-		if(DHT11_Temp<25)
-			{
-		    HOT=0;COLD=1;
-			}
-			else if(DHT11_Temp>30)
-			{
-							
-		    HOT=1;COLD=0;
-			}
-		//判断土壤湿度
-			soil_value=get_adc_value(3);
-          if(soil_value<10)
-			{
-		    jsq=0;
-			}
-			else if(soil_value>30)
-			{
-							
-		    jsq=1;
-			}
-       //判断光照
-			light_value=get_adc_value(2);
-          if(light_value<70)
-			{
-		    LED0=0;
-			}
-			else if(light_value>90)
-			{
-							
-		    LED0=1;
-			}			
-			
-			
-			//判断二氧化碳
-			co2_value= get_adc_value(1);
-          if(co2_value<70)
-			{
-		    FANS=0;
-			}
-			else if(co2_value>90)
-			{
-							
-		    FANS=1;
-			}			
-						
+	case 1:
+				LightRegulate();
+				LED2 = 0 ; 
+				break;
+	case 2:
+		LED2 = 1 ; 
+				switch (KEY_NUm)
+				{
+
+			case 3:
+
+				break;
+			case 4:
+
+				break;
+			default:
+				break;		
+				}
+				break;
+	default:
+		break;
 	}
+}
+void LightRegulate(void)
+{
+
+	if ((ligh>75) && (light<=100))
+		TIM_SetCompare2(TIM3,100);
+	else if((ligh>50) && (light<=75))
+	TIM_SetCompare2(TIM3,75);
+	else if ((ligh>25) && (light<=50))
+	TIM_SetCompare2(TIM3,50);
+	else if ((ligh=>0) && (light<=25))
+	TIM_SetCompare2(TIM3,25);
 }
