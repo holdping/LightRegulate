@@ -1,3 +1,13 @@
+/**
+ * *****************************************************************************
+ * @file 	main.c
+ * @author 	HXP
+ * @date 	2023.4.21
+ * @version v1.0
+ * @brief   根据光线强度改变LED灯的亮度，红外传感器识别有无人经过，有则开灯，无则关灯
+ * *****************************************************************************
+*/
+
 #include "stm32f10x.h"
 #include "led.h"
 #include "delay.h"
@@ -9,32 +19,32 @@
 #include "Timer.h"
 #include "iwdg.h"
 uint8_t Key_GetNum(void);
-void KEY_ui(void);
-void LightRegulate(void);
- 	  u8 light = 0;
+void 	KEY_ui(void);
+void 	LightRegulate(void);
+u8 		light = 0;
 int main(void)
 	
 {  
 
-	  LED_Init();
-	  KEY_init();
-	  ADC1_Init();
-	  pwm_Init(720,100);
-		Timer2_Init();
-		IWDG_Init(5,625);
-  	usart3_init(115200);
-	  u3_printf("初始化完成%d\r\n");
+			LED_Init();
+			KEY_init();
+			ADC1_Init();
+			pwm_Init(720,100);
+			Timer2_Init();
+			IWDG_Init(5,625);
+			usart3_init(115200);
+			u3_printf("初始化完成%d\r\n");
 
-	while(1)
-	{ 
-		
-		light 	= ADC_Trans(ADC_Channel_1,10);
-	  u3_printf("light:%d\r\n",light);
-		if(HC501s)
-		TIM_SetCompare2(TIM3,100);
-		KEY_ui();
+				while(1)
+				{ 
+					
+					light 	= ADC_Trans(ADC_Channel_1,10);
+				u3_printf("light:%d\r\n",light);
+					if(HC501s)
+					TIM_SetCompare2(TIM3,100);
+					KEY_ui();
 
-	}
+				}
 }
 
 uint8_t Key_GetNum(void)

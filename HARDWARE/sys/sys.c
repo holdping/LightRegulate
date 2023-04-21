@@ -2,16 +2,17 @@
 void NVIC_Configuration2(void)
 {
 
-    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//设置NVIC中断分组2:2位抢占优先级，2位响应优先级
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);	//锟斤拷锟斤拷NVIC锟叫断凤拷锟斤拷2:2位锟斤拷占锟斤拷锟饺硷拷锟斤拷2位锟斤拷应锟斤拷锟饺硷拷
 
 }
 
 void SysTick_Init(int n)
 {
-/* SystemFrequency /1000 1ms ????
-* SystemFrequency / 100000 10us ????
-* SystemFrequency / 1000000 1us ????
-*/
+/**
+ * SystemFrequency /1000 1ms ????
+ * SystemFrequency / 100000 10us ????
+ * SystemFrequency / 1000000 1us ????
+ */
 if (SysTick_Config(SystemCoreClock/1000000*n)) {
 /* Capture error */
 	  while(1)

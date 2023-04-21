@@ -17,7 +17,7 @@ void delay_ms(u16 ms)
 //nus为要延时的us数.		    								   
 /**
 	* @name		delay_us
-  * @brief  ??????
+    * @brief  ??????
 	* @param  us	?????   0 ~ 2^24
 	* @return void
 	* @Sample delay_us(2)
