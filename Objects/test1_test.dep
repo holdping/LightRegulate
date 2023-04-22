@@ -810,7 +810,7 @@ I (HARDWARE\usart3\usart3.h)(0x644140EE)
 I (G:\keil5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (G:\keil5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (G:\keil5\ARM\ARMCC\include\string.h)(0x5475F300)
-F (.\HARDWARE\timer\Timer.c)(0x6442A74E)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\USER -I.\CORE -I.\FWLib\inc -I.\HARDWARE\sys -I.\HARDWARE\delay -I.\HARDWARE\LED -I.\HARDWARE\usart3 -I.\HARDWARE\timer -I.\HARDWARE -I.\HARDWARE\ADC3-I D:\Desktop\智能台灯\LightRegulate\RTE-I G:\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I G:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+F (.\HARDWARE\timer\Timer.c)(0x64436942)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I.\USER -I.\CORE -I.\FWLib\inc -I.\HARDWARE\sys -I.\HARDWARE\delay -I.\HARDWARE\LED -I.\HARDWARE\usart3 -I.\HARDWARE\timer -I.\HARDWARE -I.\HARDWARE\ADC3-I D:\Desktop\智能台灯\LightRegulate\RTE-I G:\keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0-I G:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
 I (HARDWARE\timer\Timer.h)(0x64414369)
 I (.\HARDWARE\sys\sys.h)(0x644140EE)
 I (.\USER\stm32f10x.h)(0x644140EE)

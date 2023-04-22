@@ -26,7 +26,7 @@ void pwm_Init(u16 TIM3_Prescaler, u16 TIM_Period)
 	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
 	
 	/* PWM3 Mode configuration: Channel2 */
-	TIM_OCInitStructure.TIM_OCMode 						= TIM_OCMode_PWM2;
+	TIM_OCInitStructure.TIM_OCMode 						= TIM_OCMode_PWM1;
 	TIM_OCInitStructure.TIM_OutputState 				= TIM_OutputState_Enable;
 		TIM_OCInitStructure.TIM_Pulse 					= 50;
 	TIM_OCInitStructure.TIM_OCPolarity 					= TIM_OCPolarity_High;
