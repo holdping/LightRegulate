@@ -33,15 +33,16 @@ int main(void)
 			Timer2_Init();
 			IWDG_Init(5,625);
 			usart3_init(115200);
-			u3_printf("初始化完成%d\r\n");
+			u3_printf("初始化完成\r\n");
 
 				while(1)
 				{ 
 					
 					light 	= ADC_Trans(ADC_Channel_1,10);
-				u3_printf("light:%d\r\n",light);
-					if(HC501s)
-					TIM_SetCompare2(TIM3,100);
+				//	u3_printf("light:%d\r\n",light);
+				//	u3_printf("dust:%d\r\n",dust);
+//					if(HC501s)
+//					TIM_SetCompare2(TIM3,100);
 					KEY_ui();
 
 				}
@@ -57,6 +58,7 @@ uint8_t Key_GetNum(void)
 						while (KEY1 == 0);//等待按键释放
 						delay_ms(20);
 						KeyNum = 1;
+						u3_printf("key:%d\r\n",KeyNum);
 				}
 				if (KEY2 == 0)
 				{
@@ -65,6 +67,7 @@ uint8_t Key_GetNum(void)
 						while (KEY2 == 0);
 						delay_ms(20);
 						KeyNum = 2;
+						u3_printf("key:%d\r\n",KeyNum);
 				}
 				
 					if (KEY3==0)
@@ -74,6 +77,7 @@ uint8_t Key_GetNum(void)
 						while (KEY3 == 0);
 						delay_ms(20);
 						KeyNum = 3;
+						u3_printf("key:%d\r\n",KeyNum);
 				}
 				if (KEY4 == 0)
 				{
@@ -82,6 +86,7 @@ uint8_t Key_GetNum(void)
 						while (KEY4 == 0);
 						delay_ms(20);
 						KeyNum = 4;
+						u3_printf("key:%d\r\n",KeyNum);
 				}
 				
 				return KeyNum;
@@ -98,9 +103,21 @@ void KEY_ui(void)
 								break;
 					case 2:
 						LED2 = 1 ;
-						if(HC501s)
-						TIM_SetCompare2(TIM3,(dust=100));	
+						TIM_SetCompare2(TIM3,(dust=100));
+						u3_printf("dust:%d\r\n",dust);
 								break;
+					case 3: 
+						if(dust<100)
+							dust += 25;
+						TIM_SetCompare2(TIM3,(dust));
+						u3_printf("dust:%d\r\n",dust);
+						break;
+					
+					case 4:
+						if(dust>0)
+							dust -= 25;
+						TIM_SetCompare2(TIM3,(dust));
+						u3_printf("dust:%d\r\n",dust);
 					default:
 								LightRegulate();
 						break;
