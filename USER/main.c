@@ -22,6 +22,7 @@ uint8_t Key_GetNum(void);
 void 	KEY_ui(void);
 void 	LightRegulate(void);
 u8 		light = 0;
+
 int main(void)
 	
 {  
@@ -29,16 +30,16 @@ int main(void)
 			LED_Init();
 			KEY_init();
 			ADC1_Init();
-			pwm_Init(720,100);
+			pwm_Init(720,4096);
 			Timer2_Init();
 			IWDG_Init(5,625);
 			usart3_init(115200);
 			u3_printf("初始化完成\r\n");
-
+			uint8_t KeyNum = 0;
 				while(1)
 				{ 
 					
-					light 	= ADC_Trans(ADC_Channel_1,10);
+				//	light 	= ADC_Trans(ADC_Channel_1,10);
 				//	u3_printf("light:%d\r\n",light);
 				//	u3_printf("dust:%d\r\n",dust);
 //					if(HC501s)
@@ -50,7 +51,7 @@ int main(void)
 
 uint8_t Key_GetNum(void)
 {
-				uint8_t KeyNum = 0;
+				
 				if (KEY1==0) //KEY 可能被按下
 				{
 						delay_ms(20);//消抖
@@ -99,25 +100,30 @@ void KEY_ui(void)
 			{
 					case 1:
 								LightRegulate();
-								LED2 = 0 ; 
+								LED2 = 0 ;
+								KEY_NUm = 1; 
 								break;
 					case 2:
 						LED2 = 1 ;
-						TIM_SetCompare2(TIM3,(dust=100));
+						TIM_SetCompare2(TIM3,(dust=4096));
 						u3_printf("dust:%d\r\n",dust);
+								KEY_NUm = 2;
 								break;
 					case 3: 
-						if(dust<100)
-							dust += 25;
+						if(dust<4096)
+							dust += 1024;
 						TIM_SetCompare2(TIM3,(dust));
 						u3_printf("dust:%d\r\n",dust);
+						KEY_NUm = 2;
 						break;
 					
 					case 4:
 						if(dust>0)
-							dust -= 25;
+							dust -= 1024;
 						TIM_SetCompare2(TIM3,(dust));
 						u3_printf("dust:%d\r\n",dust);
+						KEY_NUm = 2;
+						break;
 					default:
 								LightRegulate();
 						break;
@@ -125,14 +131,6 @@ void KEY_ui(void)
 }
 void LightRegulate(void)
 {
-
-			if ((light>75) && (light<=100))
-				dust = 25;
-			else if((light>50) && (light<=75))
-				dust = 50;
-			else if ((light>25) && (light<=50))
-				dust = 75;
-			else if ((light>=0) && (light<=25))
-				dust = 100;
-			TIM_SetCompare2(TIM3,dust);
+			light= ADC_Trans(ADC_Channel_1,10);	
+			TIM_SetCompare2(TIM3,light);
 }
