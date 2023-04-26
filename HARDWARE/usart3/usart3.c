@@ -73,7 +73,7 @@ void usart3_init(u32 bound)
 	USART_InitStructure.USART_StopBits 				= USART_StopBits_1;					//一个停止位
 	USART_InitStructure.USART_Parity 				= USART_Parity_No;					//无奇偶校验位
 	USART_InitStructure.USART_HardwareFlowControl 	= USART_HardwareFlowControl_None;	//无硬件数据流控制
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;						//收发模式
+	USART_InitStructure.USART_Mode 					= USART_Mode_Rx | USART_Mode_Tx;						//收发模式
   
 	USART_Init(USART3, &USART_InitStructure); 						//初始化串口	3
 	USART_Cmd(USART3, ENABLE);                    					//使能串口 

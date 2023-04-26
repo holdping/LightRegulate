@@ -22,7 +22,7 @@ uint8_t Key_GetNum(void);
 void 	KEY_ui(void);
 void 	LightRegulate(void);
 u8 		light = 0;
-
+uint8_t KeyNum = 0;
 int main(void)
 	
 {  
@@ -35,7 +35,7 @@ int main(void)
 			IWDG_Init(5,625);
 			usart3_init(115200);
 			u3_printf("初始化完成\r\n");
-			uint8_t KeyNum = 0;
+			
 				while(1)
 				{ 
 					
@@ -105,7 +105,9 @@ void KEY_ui(void)
 								break;
 					case 2:
 						LED2 = 1 ;
+						if(dust<=0)
 						TIM_SetCompare2(TIM3,(dust=4096));
+						else TIM_SetCompare2(TIM3,(dust));
 						u3_printf("dust:%d\r\n",dust);
 								KEY_NUm = 2;
 								break;
